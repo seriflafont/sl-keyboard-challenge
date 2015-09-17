@@ -39,6 +39,20 @@ module.exports = function(grunt){
 		  }
 		},
 
+		imagemin: {
+		   dist: {
+		      options: {
+		        optimizationLevel: 5
+		      },
+		      files: [{
+		         expand: true,
+		         cwd: 'builds/development/images',
+		         src: ['**/*.{png,jpg,gif}'],
+		         dest: 'builds/dist/images'
+		      }]
+		   }
+		},
+
 		connect: {
 			server: {
 				options: {
@@ -64,7 +78,8 @@ module.exports = function(grunt){
 		}
 
 	}); //init config section
-
+	
+	grunt.loadNpmTasks('grunt-contrib-imagemin');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-concat'); //concatenates files
 	grunt.loadNpmTasks('grunt-sass');

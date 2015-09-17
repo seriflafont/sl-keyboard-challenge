@@ -5,3 +5,4 @@ components/libs
 .tmp
 .sass-cache
 builds/**/images/*
+builds/dist
