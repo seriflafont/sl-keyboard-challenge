@@ -1,5 +1,5 @@
 # barebones-project-starter
-Barebones scaffold for a web app with grunt dev and dist tasks.
+Barebones scaffold for a web app with grunt dev and dist tasks. Yeoman web-app is better but this is my take on starting with slightly less.
 
 dependencies: npm, grunt, bower
 
