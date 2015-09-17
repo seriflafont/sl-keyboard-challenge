@@ -30,15 +30,6 @@ module.exports = function(grunt){
 			}
 		}, //sass
 
-		copy: {
-		  files: {
-		    cwd: 'builds/development',  // set working folder / root to copy
-		    src: '**/*',           // copy all files and subfolders
-		    dest: 'builds/dist',    // destination folder
-		    expand: true           // required when using cwd
-		  }
-		},
-
 		imagemin: {
 		   dist: {
 		      options: {
@@ -51,6 +42,44 @@ module.exports = function(grunt){
 		         dest: 'builds/dist/images'
 		      }]
 		   }
+		},
+		uglify: {
+			options: {
+		      compress: {
+		        drop_console: true
+		      }
+		    },
+		    js: {
+		      files: {
+		        'builds/dist/js/script.min.js': ['builds/development/js/script.js'],
+		        'builds/dist/js/_bower.min.js': ['builds/development/js/_bower.js']
+		      }
+		    }
+		},
+
+		cssmin: {
+		   dist: {
+		      options: {
+		         banner: '/*! Sarah Lamont (@seriflafont) | MIT Licensed */'
+		      },
+		      files: {
+		         'builds/dist/css/style.min.css': ['builds/development/css/**/*.css']
+		      }
+		  }
+		},
+
+		processhtml: {
+		    options: {
+		      strip: true
+		    },
+		    dist: {
+		    	files: [{
+			        expand: true,
+			        cwd: 'builds/development',
+			        src: '**/*.html',
+			        dest: 'builds/dist'
+			    }]
+		    },
 		},
 
 		connect: {
@@ -79,13 +108,17 @@ module.exports = function(grunt){
 
 	}); //init config section
 	
+	grunt.loadNpmTasks('grunt-processhtml');
+	grunt.loadNpmTasks('grunt-contrib-cssmin');
+	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-imagemin');
-	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-concat'); //concatenates files
 	grunt.loadNpmTasks('grunt-sass');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-connect');
 	grunt.loadNpmTasks('grunt-bower-concat');
+
+	grunt.registerTask('build',['imagemin', 'uglify', 'cssmin', 'processhtml']);
 	grunt.registerTask('default', ['bower_concat', 'concat', 'sass', 'connect', 'watch']);
 
 }; //wrapper function
