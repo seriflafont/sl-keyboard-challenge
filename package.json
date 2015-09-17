@@ -1,7 +1,7 @@
 {
-  "name": "gruntworkflows",
+  "name": "barebones-project-starter",
   "version": "1.0.0",
-  "description": "Testing Grunt work flow",
+  "description": "Basic bootstrap for web build",
   "author": "",
   "license": "MIT",
   "devDependencies": {
