@@ -30,10 +30,13 @@ module.exports = function(grunt){
 			}
 		}, //sass
 
-		wiredep: {
-			task: {
-				src: 'builds/development/**/*.html'
-			}
+		copy: {
+		  files: {
+		    cwd: 'builds/development',  // set working folder / root to copy
+		    src: '**/*',           // copy all files and subfolders
+		    dest: 'builds/dist',    // destination folder
+		    expand: true           // required when using cwd
+		  }
 		},
 
 		connect: {
@@ -62,12 +65,12 @@ module.exports = function(grunt){
 
 	}); //init config section
 
+	grunt.loadNpmTasks('grunt-contrib-copy');
 	grunt.loadNpmTasks('grunt-contrib-concat'); //concatenates files
 	grunt.loadNpmTasks('grunt-sass');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-contrib-connect');
-	grunt.loadNpmTasks('grunt-wiredep');
 	grunt.loadNpmTasks('grunt-bower-concat');
-	grunt.registerTask('default', ['wiredep', 'bower_concat', 'concat', 'sass', 'connect', 'watch']);
+	grunt.registerTask('default', ['bower_concat', 'concat', 'sass', 'connect', 'watch']);
 
 }; //wrapper function

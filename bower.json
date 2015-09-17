@@ -1,10 +1,10 @@
 {
-  "name": "bb-scaffold",
+  "name": "bb-project-starter",
   "version": "1.0.0",
   "authors": [
     "Sarah Lamont"
   ],
-  "description": "Barebones Scaffold",
+  "description": "Barebones Project Starter",
   "license": "MIT",
   "ignore": [
     "**/.*",
