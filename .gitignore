@@ -1,0 +1,8 @@
+.DS_Store
+node_modules
+bower_components
+components/libs
+.tmp
+.sass-cache
+builds/**/images/*
+builds/dist

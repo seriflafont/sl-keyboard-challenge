@@ -1,0 +1,39 @@
+// _base.scss
+// ==============
+body {
+  background: #fff;
+  font-family: $bodyFont;
+  font-size: 1.5em;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: $headFont;
+  font-size: 3em;
+}
+
+h1 {
+  font-size: 3.5em;
+  margin-bottom: 10px;
+
+  @media (max-width: 700px) {
+    font-size: 2.2em;
+  }
+}
+
+h2 {
+  font-size: 1.5em;
+}
+
+p {
+  font-size: 1.3em;
+  line-height: 1.5em;
+  margin-bottom: 20px;
+  margin-top: 15px;
+}
